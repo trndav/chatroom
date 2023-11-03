@@ -1,0 +1,15 @@
+<div class="container">
+    <h1>Chatroom</h1>
+    <p>Find me in app/views/pages/home.html.erb</p>
+
+    <% if current_user %>
+        <p>Hello, <%= current_user.email %>!</p>
+        <p><%= link_to "Start chatting", "#" %>
+        <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+    <% else %>
+        <p>Hello, Guest!</p>
+        <%= link_to "Login", new_user_session_path %>
+        <p>or</p>
+        <%= link_to "Register Account", new_user_registration_path %>
+    <% end %>
+</div>
