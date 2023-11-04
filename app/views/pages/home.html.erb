@@ -4,7 +4,7 @@
 
     <% if current_user %>
         <p>Hello, <%= current_user.email %>!</p>
-        <p><%= link_to "Start chatting", "#" %>
+        <p><%= link_to "Start chatting", rooms_path %>
         <%= button_to "Logout", destroy_user_session_path, method: :delete %>
     <% else %>
         <p>Hello, Guest!</p>
