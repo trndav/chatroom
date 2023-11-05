@@ -9,4 +9,5 @@ class User < ApplicationRecord
 
   # After new record is committed to database added/brodcasted to "users" section in webpage realtime
   after_create_commit { broadcast_append_to "users" }
+  has_many :messages
 end
