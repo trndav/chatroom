@@ -1,42 +1,46 @@
-body{
+body {
     overflow: hidden;
-}
-.msg-form{
+  }
+  .msg-form {
     width: 100%;
     height: 56px;
     padding: 10px;
-}
-/* 100 vh means view port height? */
-#single_room{
-    height: calc(100vh - 150px); 
-}
-#messages {
-    height: calc(100vh - 150px); 
+  }
+  
+  #single_room {
+    height: calc(100vh - 150px);
+  }
+  
+  #messages {
+    height: calc(100vh - 170px);
     overflow-x: hidden;
     overflow-y: scroll;
-}
-#room_container {
-    height: 100vh; 
+  }
+  
+  #room_container {
+    height: 100vh;
     margin-right: 0px !important;
-}
-#side_panel {
+  }
+  
+  #side_panel {
     height: 100vh;
     margin-right: 0px !important;
     overflow-x: hidden;
     overflow-y: scroll;
     margin-bottom: 55px;
-}
-#chatroom_container {
+  }
+  #chatroom_container {
     height: 100vh;
     margin-right: 0px !important;
     overflow-x: hidden;
     overflow-y: hidden;
-}
-.msg-content {
+  }
+  
+  .msg-content {
     width: 80%;
     margin-right: 5px;
-}
-.message-box {
+  }
+  .message-box {
     word-wrap: break-word;
     width: fit-content;
     max-width: 40%;
@@ -45,4 +49,4 @@ body{
     margin-bottom: 10px;
     background-color: #555555;
     padding: 10px;
-}
+  }
