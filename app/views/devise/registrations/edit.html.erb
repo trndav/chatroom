@@ -4,6 +4,17 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <% if resource.avatar.attached? %>
+      <%= image_tag(resource.avatar_thumbnail) %>
+    <% else %>
+      <%= image_tag("/assets/default_avatar.png", style: "width:50px; height: 50px;") %>
+    <% end %>
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
