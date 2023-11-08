@@ -1,11 +1,11 @@
 <div class="container text-center">
     <h1>Chatroom</h1>
-    <p>Find me in app/views/pages/home.html.erb</p>
+    <p>app/views/pages/home.html.erb</p>
 
     <% if current_user %>
         <p>Hello, <%= current_user.email %>!</p>
         <%= image_tag(current_user.avatar_thumbnail) %>
-        <p><%= link_to "Start chatting", rooms_path, class:"btn btn-success" %></p>     
+        <p><%= link_to "Start chatting", room_path(1), class:"btn btn-success" %></p>     
         <p><%= link_to "Edit Account", edit_user_registration_path, class:"btn btn-secondary" %></p>
         <%= button_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-danger" %>
     <% else %>
