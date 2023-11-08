@@ -3,8 +3,8 @@
     <div class="d-flex align-items-center">
       <%= image_tag(message.user.chat_avatar, class:"chat_pfp") %>
     <div>
-        <p class="name" style="font-size: 0.8em;"> <%= message.user.email %> </p>
-        <p class="time" style="font-size: 0.6em;"><%= time_ago_in_words(message.created_at) %> ago </p>
+        <p class="name" style="font-size: 0.8em; margin-top: -5px;"> <%= message.user.email %> </p>
+        <p class="time" style="font-size: 0.5em;"><%= time_ago_in_words(message.created_at) %> ago at <%= message.created_at.strftime("%M:%H, %d-%m-%y") %></p>
       </div>
     </div>
     <%= message.body %>

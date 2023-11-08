@@ -25,9 +25,10 @@ body {
   #side_panel {
     height: 100vh;
     margin-right: 0px !important;
+    margin-left: 10px !important;
     overflow-x: hidden;
     overflow-y: scroll;
-    margin-bottom: 55px;
+    margin-bottom: 55px;    
   }
   #chatroom_container {
     height: 100vh;
@@ -86,4 +87,19 @@ body {
     margin-top: 0px;
     padding-bottom: 0px;
     margin-bottom: 0px;
+  }
+  .icon-container {
+    width: 50px;
+    height: 50px;
+    position: relative;
+  }
+  .status-circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: grey;
+    border: 1px solid white;
+    bottom: 10px;
+    right: 10px;
+    position: absolute;
   }
