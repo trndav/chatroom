@@ -2,7 +2,7 @@
     <!--- Code turbo:submit-end starts after form submission initiated, calls reset-form/js, reset action --->
     <%= form_with(model: [@single_room, @message], remote: true, class:"d-flex", 
             data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset"}) do |f| %>
-        <div id="attachment-previews" data-controller="message-preview" 
+        <div id="attachment-previews" class="d-none" data-controller="message-preview" 
             data-action="message-preview#preview">
         </div>
         <div class="image-upload">

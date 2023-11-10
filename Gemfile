@@ -74,3 +74,4 @@ end
 gem 'devise', github: 'heartcombo/devise', branch: 'main'
 gem 'responders', '~> 3.1.0'
 gem "mini_magick"
+gem "pagy", "~> 6.1"
