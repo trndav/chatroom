@@ -22,4 +22,4 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['postgres://chatroom_86ap_user:H0ud1zhGnb7FRGH12KUkBk5H6rO5ml78@dpg-cl72dm8icrhc73d08k7g-a/chatroom_86ap'] %>
