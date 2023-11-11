@@ -4,18 +4,23 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   scope :all_except, ->(user) { where.not(id: user) }
-  # Maybe this would do the same User.all_except(current_user)
 
   # After new record is committed to database added/brodcasted to "users" section in webpage realtime
   after_create_commit { broadcast_append_to "users" }
   # broadcast for status broadcast_update is method defined bellow
   after_update_commit { broadcast_update }
-
-  enum status: %i[offline away online]
-
   has_many :messages
   has_one_attached :avatar
+  has_many :joinables, dependent: :destroy 
+  has_many :joined_rooms, through: :joinables, source: :room 
+
+  enum role: %i[user admin]
+  enum status: %i[offline away online]
+  
   after_commit :add_default_avatar, on: %i[create update]
+
+  #Set user admin or not
+  after_initialize :set_default_role, if: :new_record?
 
   def avatar_thumbnail 
     avatar.variant(resize_to_limit: [140, 140]).processed
@@ -44,6 +49,11 @@ class User < ApplicationRecord
   end
 
   private
+
+  def set_default_role 
+    # If user role is nil (self.role) then set role to :user.
+    self.role ||= :user
+  end
 
   def add_default_avatar 
     return if avatar.attached?
