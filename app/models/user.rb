@@ -10,9 +10,9 @@ class User < ApplicationRecord
   # broadcast for status broadcast_update is method defined bellow
   after_update_commit { broadcast_update }
   has_many :messages
-  has_one_attached :avatar
+  has_one_attached :avatar  
   has_many :joinables, dependent: :destroy 
-  has_many :joined_rooms, through: :joinables, source: :room 
+  has_many :joined_rooms, through: :joinables, source: :room
 
   enum role: %i[user admin]
   enum status: %i[offline away online]

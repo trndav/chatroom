@@ -65,7 +65,7 @@ consumer.subscriptions.create("AppearanceChannel", {
     if (!!shouldRun) { // check if we are on rightpage, double not?
       this.online();
       clearTimeout(timer);
-      const timeInSeconds = 120; // seconds to away
+      const timeInSeconds = 60; // seconds to away status
       const miliseconds = 1000;
       const timeInMiliseconds = timeInSeconds * miliseconds;
 
