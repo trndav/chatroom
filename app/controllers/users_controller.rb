@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
     @room = Room.new
     @joined_rooms = current_user.joined_rooms
+    @rooms = search_rooms
     @room_name = get_name(@user, current_user)
     @single_room = Room.where(name: @room_name).first || Room.create_private_room([@user, current_user], @room_name)
 
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
     pagy_messages = @single_room.messages.includes(:user).order(created_at: :desc)
     @pagy, messages = pagy(pagy_messages, items: 10)
     @messages = messages.reverse
-    @rooms = search_rooms
+
     render 'rooms/index'
   end
 

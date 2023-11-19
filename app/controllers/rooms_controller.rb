@@ -5,9 +5,9 @@ class RoomsController < ApplicationController
   def index
     @room = Room.new
     @joined_rooms = current_user.joined_rooms
+    @rooms = search_rooms
 
     @users = User.all_except(current_user)
-    @rooms = search_rooms
     render 'index'
   end
 
@@ -15,9 +15,8 @@ class RoomsController < ApplicationController
     @single_room = Room.find(params[:id])
 
     @room = Room.new
+    @rooms = search_rooms
     @joined_rooms = current_user.joined_rooms
-
-    current_user.update!(current_room_id: @single_room.id)
 
     @message = Message.new
 
@@ -26,13 +25,12 @@ class RoomsController < ApplicationController
     @messages = messages.reverse
 
     @users = User.all_except(current_user)
-    # clear name_search param
-    @rooms = search_rooms
     render 'index'
   end
 
   def create
     @room = Room.create(name: params['room']['name'])
+    redirect_to @room
   end
 
   def search
@@ -48,16 +46,16 @@ class RoomsController < ApplicationController
     end
   end
 
-  def leave
-    @room = Room.find(params[:id])
-    current_user.joined_rooms.delete(@room)
-    redirect_to rooms_path
-  end
-
   def join
     @room = Room.find(params[:id])
     current_user.joined_rooms << @room
     redirect_to @room
+  end
+
+  def leave
+    @room = Room.find(params[:id])
+    current_user.joined_rooms.delete(@room)
+    redirect_to rooms_path
   end
 
   private
